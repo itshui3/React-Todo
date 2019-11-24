@@ -13,7 +13,7 @@ export default class TodoForm extends React.Component {
         <input 
           placeholder="Things to do" 
           onChange={this.props.setThing} 
-          value={this.props.state.task} 
+          // value={this.props.query.task} 
           name="task"
 
         />
@@ -21,7 +21,7 @@ export default class TodoForm extends React.Component {
         <input 
           placeholder="Time they need to be done" 
           onChange={this.props.setThing}
-          value={this.props.state.time}
+          // value={this.props.query.time}
           name="time"
 
         />

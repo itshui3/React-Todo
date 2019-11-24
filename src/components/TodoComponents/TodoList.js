@@ -10,23 +10,21 @@ class TodoList extends Component {
     super();
     this.state = {
       notes: [],
-      task: "",
-      time: ""
+      query: {
+        task: "",
+        time: ""
+      }
     }
   }
 
   addNote = ev => {
     ev.preventDefault();
-    const note = {
-      task: this.state.task,
-      time: this.state.time
-    }
 
-    this.setState({ notes: [...this.state.notes, note] })
+    this.setState({ notes: [...this.state.notes, this.state.query] })
   }
 
   setThing = ev => {
-    this.setState({ [ev.target.name]: ev.target.value })
+    this.setState({query : { ...this.state.query, [ev.target.name]: ev.target.value }})
   }
 
   // editThing = index => {
@@ -43,7 +41,7 @@ class TodoList extends Component {
   render() {
     return (
       <div>
-        <TodoForm addNote={this.addNote} setThing={this.setThing} state={this.state} />
+        <TodoForm addNote={this.addNote} setThing={this.setThing} query={this.state.query} />
         {
           this.state.notes.map((d, i) => (
             <Todo note={d} key={i} index={i} />
