@@ -10,30 +10,47 @@ class TodoList extends Component {
     super();
     this.state = {
       notes: [],
-      query: ""
+      task: "",
+      time: ""
     }
   }
 
   addNote = ev => {
     ev.preventDefault();
-    this.setState({ notes: [...this.state.notes, this.state.query] })
+    const note = {
+      task: this.state.task,
+      time: this.state.time
+    }
+
+    this.setState({ notes: [...this.state.notes, note] })
   }
 
-  setQuery = ev => {
-    this.setState({ query: ev.target.value })
+  setThing = ev => {
+    this.setState({ [ev.target.name]: ev.target.value })
   }
+
+  // editThing = index => {
+
+
+  //   this.setState([this.state.notes, this.state.notes[index]: {
+  //     task: this.state.task,
+  //     time: this.state.time
+  //   })]
+
+
+  // }
 
   render() {
     return (
-      <ul>
-        <TodoForm addNote={this.addNote} setQuery={this.setQuery} />
+      <div>
+        <TodoForm addNote={this.addNote} setThing={this.setThing} state={this.state} />
         {
           this.state.notes.map((d, i) => (
-            <Todo note={d} key={i} />
+            <Todo note={d} key={i} index={i} />
           ))
 
         }
-      </ul>
+        </div>
     )
   }
 }
