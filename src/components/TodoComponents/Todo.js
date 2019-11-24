@@ -12,8 +12,12 @@ export default class Todo extends React.Component {
   render() {
     return(
       <div>
-        {this.props.note.task}
-        {this.props.note.time}
+        <ul>
+          <li>{this.props.note.task}</li>
+          <li>{this.props.note.time}</li>
+          <li><button onClick={() => this.props.delete(this.props.index)}>Delete</button></li>
+        </ul>
+
       </div>
       
     )

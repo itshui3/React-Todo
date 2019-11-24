@@ -29,14 +29,24 @@ class TodoList extends Component {
 
   // editThing = index => {
 
+  //   let notes = this.state.notes.slice(0, index).concat(this.state.notes.slice(index+1));
 
-  //   this.setState([this.state.notes, this.state.notes[index]: {
-  //     task: this.state.task,
-  //     time: this.state.time
-  //   })]
-
+  //   notes[index] = this.state.query;
+  //   this.setState({ notes: [
+  //     notes
+  //   ] })
 
   // }
+
+  deleteThing = index => {
+
+    let notes = this.state.notes.slice(0, index).concat(this.state.notes.slice(index+1));
+
+    this.setState({ notes: [
+      ...notes
+    ] })
+
+  }
 
   render() {
     return (
@@ -44,7 +54,7 @@ class TodoList extends Component {
         <TodoForm addNote={this.addNote} setThing={this.setThing} query={this.state.query} />
         {
           this.state.notes.map((d, i) => (
-            <Todo note={d} key={i} index={i} />
+            <Todo note={d} key={i} index={i} delete={this.deleteThing} />
           ))
 
         }
