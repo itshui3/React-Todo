@@ -8,19 +8,29 @@ class TodoList extends Component {
 
   constructor() {
     super();
-    this.state = [
-      {
-        
-      }
-    ]
+    this.state = {
+      notes: [],
+      query: ""
+    }
+  }
+
+  addNote = ev => {
+    ev.preventDefault();
+    this.setState({ notes: [...this.state.notes, this.state.query] })
+  }
+
+  setQuery = ev => {
+    this.setState({ query: ev.target.value })
   }
 
   render() {
     return (
       <ul>
-        <TodoForm />
+        <TodoForm addNote={this.addNote} setQuery={this.setQuery} />
         {
-          //map state list of inputted values into list items
+          this.state.notes.map((d, i) => (
+            <Todo note={d} key={i} />
+          ))
 
         }
       </ul>

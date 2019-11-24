@@ -1,15 +1,9 @@
 import React from 'react';
-import TodoList from './components/TodoComponents';
+import TodoList from './components/TodoComponents/TodoList';
 
 class App extends React.Component {
   constructor() {
     super();
-    this.state = [
-      {
-        chore: 'clean',
-        dueDate: ''
-      }
-    ]
 
   }
 
@@ -19,9 +13,10 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h2>{this.state.chore}Welcome to your Todo App!</h2>
-
+        <h2>Welcome to your Todo App!</h2>
         <TodoList />
+
+
 
       </div>
     );

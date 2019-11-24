@@ -1,10 +1,19 @@
 import React from 'react';
 
-export default function TodoForm() {
+export default class TodoForm extends React.Component {
 
-  return (
-    <form>
-      <input placeholder="Things to do" />
-    </form>
-  )
+  constructor() {
+    super()
+  }
+
+
+  render() {
+    return (
+      <form onSubmit={this.props.addNote}>
+        <input placeholder="Things to do" onChange={this.props.setQuery} />
+      </form>
+    )
+
+  }
+
 }
