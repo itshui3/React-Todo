@@ -27,16 +27,18 @@ class TodoList extends Component {
     this.setState({query : { ...this.state.query, [ev.target.name]: ev.target.value }})
   }
 
-  // editThing = index => {
+  editThing = index => {
+    let notes = this.state.notes
+      .slice(0, index)
+      .concat(this.state.query)
+      .concat(this.state.notes.slice(index+1));
 
-  //   let notes = this.state.notes.slice(0, index).concat(this.state.notes.slice(index+1));
+    notes[index] = this.state.query;
+    this.setState({ notes: [
+      ...notes
+    ] })
 
-  //   notes[index] = this.state.query;
-  //   this.setState({ notes: [
-  //     notes
-  //   ] })
-
-  // }
+  }
 
   deleteThing = index => {
 
@@ -54,7 +56,7 @@ class TodoList extends Component {
         <TodoForm addNote={this.addNote} setThing={this.setThing} query={this.state.query} />
         {
           this.state.notes.map((d, i) => (
-            <Todo note={d} key={i} index={i} delete={this.deleteThing} />
+            <Todo note={d} key={i} index={i} edit={this.editThing} delete={this.deleteThing} />
           ))
 
         }

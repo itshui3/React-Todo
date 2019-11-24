@@ -15,7 +15,10 @@ export default class Todo extends React.Component {
         <ul>
           <li>{this.props.note.task}</li>
           <li>{this.props.note.time}</li>
-          <li><button onClick={() => this.props.delete(this.props.index)}>Delete</button></li>
+          <li>
+            <button onClick={() => this.props.delete(this.props.index)}>Delete</button>
+            <button onClick={() => this.props.edit(this.props.index)}>Edit</button>
+          </li>
         </ul>
 
       </div>
