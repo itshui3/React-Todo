@@ -5,7 +5,6 @@ export default class Todo extends React.Component {
   constructor() {
     super()
     this.state = {
-      complete: false
     }
   }
 // these props need to be receiving information I can plug in that the

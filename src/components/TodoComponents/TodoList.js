@@ -57,7 +57,7 @@ class TodoList extends Component {
 
   setComplete = index => {
     const notes = [...this.state.notes];
-    notes[index].completion = true;
+    notes[index].completion = !this.state.notes[index].completion;
     this.setState({ notes: notes});
   }
 
